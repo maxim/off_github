@@ -1,0 +1,10 @@
+== Off Github
+
+A little tool to help you migrate all your gems from github to gemcutter.
+
+== Run
+
+  % sudo gem install off_github
+  % off_github
+  
+Follow instructions.

@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require 'off_github'
+
+if ARGV[0] == "--dry"
+  OffGithub::Runner.run
+else
+  OffGithub::Runner.run true
+end
