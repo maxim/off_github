@@ -1,6 +1,6 @@
 == Off Github
 
-A little tool to help you migrate all your gems from github to gemcutter.
+A little tool to help you migrate all your installed gems from github to gemcutter.
 
 == Run
 
