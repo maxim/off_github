@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "off_github"
     gem.summary = %Q{Migrate locally installed gems from github to gemcutter.}
-    gem.description = %Q{A simple tool which helps migrate your locally installed gems from github to gemcutter. It will find all the gems installed from github and recognize them on gemcutter using with some recursive string matching. It will then present you with a list of everything it will migrate and ask for permission before touching anything.}
+    gem.description = %Q{A simple tool which helps migrate your locally installed gems from github to gemcutter. It will find all the gems installed from github and recognize them on gemcutter using some recursive string matching. It will then present you with a list of everything it will migrate and ask for permission before touching anything.}
     gem.email = "max@bitsonnet.com"
     gem.homepage = "http://github.com/maxim/off_github"
     gem.authors = ["Maxim Chernyak"]

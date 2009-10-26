@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{off_github}
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Maxim Chernyak"]
@@ -15,14 +15,19 @@ Gem::Specification.new do |s|
   s.email = %q{max@bitsonnet.com}
   s.executables = ["off_github"]
   s.extra_rdoc_files = [
-    "README.rdoc"
+    "LICENSE",
+     "README.rdoc"
   ]
   s.files = [
     ".gitignore",
+     "LICENSE",
      "README.rdoc",
      "Rakefile",
      "VERSION",
      "bin/off_github",
+     "lib/off_github.rb",
+     "lib/off_github.rb",
+     "off_github.gemspec",
      "test/helper.rb",
      "test/test_off_github.rb"
   ]

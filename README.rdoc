@@ -1,6 +1,6 @@
 == Off Github
 
-A little tool to help you migrate all your installed gems from github to gemcutter.
+A simple tool which helps migrate your locally installed gems from github to gemcutter. It will find all the gems installed from github and recognize them on gemcutter using some recursive string matching. It will then present you with a list of everything it will migrate and ask for permission before touching anything.
 
 == Run
 
