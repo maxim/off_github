@@ -12,6 +12,7 @@ begin
     gem.authors = ["Maxim Chernyak"]
     gem.add_dependency "hirb", ">=0.2.4"
     gem.add_development_dependency "shoulda", ">= 0"
+    gem.files.include %w(lib/*)
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
