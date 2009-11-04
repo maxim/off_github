@@ -11,6 +11,6 @@ Follow instructions.
 
 == Options
 
-Run --help to see available options.
-Run --no-sudo to avoid using sudo.
-Run --dry to simulate the process.
+  Use --help to see available options.
+  Use --no-sudo to avoid using sudo.
+  Use --dry to simulate the process.
