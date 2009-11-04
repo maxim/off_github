@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{off_github}
-  s.version = "1.0.2"
+  s.version = "1.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Maxim Chernyak"]
-  s.date = %q{2009-10-26}
+  s.date = %q{2009-11-04}
   s.default_executable = %q{off_github}
   s.description = %q{A simple tool which helps migrate your locally installed gems from github to gemcutter. It will find all the gems installed from github and recognize them on gemcutter using some recursive string matching. It will then present you with a list of everything it will migrate and ask for permission before touching anything.}
   s.email = %q{max@bitsonnet.com}

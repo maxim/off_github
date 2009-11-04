@@ -125,18 +125,16 @@ module OffGithub
     def will_not_be_migrated
       @will_not_be_migrated ||= Hash[*relations.select{|k, v| !v}.flatten].keys
     end
-    
+
     def stats
       <<-STATS
-
-GitHub gems found on #{GEMCUTTER_URL} (will be reinstalled):
 #{Hirb::Helpers::AutoTable.render will_be_migrated_with_versions, :headers => [GITHUB_URL, GEMCUTTER_URL, "action"]}
 
-reinstall = Everything ok. Gemcutter has same/newer version, which will replace installed github version.
-skip = Gemcutter doesn't yet have a version that you need, only older. Not touching anything. Run this again later.
-uninstall = The non-github version is already installed. Only removing github version.
+reinstall: Will reinstall from gemcutter.
+uninstall: Non-github gem already installed. Will remove github gem.
+skip: Gemcutter version is older. Will not do anything.
 
-GitHub gems not found on #{GEMCUTTER_URL} (won't be touched):
+Couldn't find these gems on Gemcutter:
 
 #{will_not_be_migrated.join("\n")}
 
@@ -163,7 +161,10 @@ GitHub gems not found on #{GEMCUTTER_URL} (won't be touched):
   end
 
   class Runner
-    def self.run(wet = false)
+    def self.run(options = {})
+      @use_sudo = !options[:"no-sudo"]
+      @wet = !options[:dry]
+      
       unless Gem.sources.find{|g| g =~ /gemcutter/}
         puts "Looks like you don't have gemcutter installed as a source. Follow instructions at #{GEMCUTTER_URL} before running this tool.\n\n"
         return
@@ -186,8 +187,8 @@ GitHub gems not found on #{GEMCUTTER_URL} (won't be touched):
             proceed = dont_ask ? "y" : STDIN.gets.strip
           
             if proceed =~ /^[ya]$/
-              cmd "sudo gem uninstall -axq --user-install #{github_gem}", wet
-              cmd "sudo gem install #{gemcutter_gem} -s #{GEMCUTTER_URL}", wet
+              cmd "gem uninstall -axq --user-install #{github_gem}"
+              cmd "gem install #{gemcutter_gem} -s #{GEMCUTTER_URL}"
               puts "\n"
             end
           else
@@ -195,7 +196,7 @@ GitHub gems not found on #{GEMCUTTER_URL} (won't be touched):
             proceed = dont_ask ? "y" : STDIN.gets.strip
             
             if proceed =~ /^[ya]$/
-              cmd "sudo gem uninstall -axq --user-install #{github_gem}", wet
+              cmd "gem uninstall -axq --user-install #{github_gem}"
               puts "\n"
             end
           end
@@ -211,8 +212,9 @@ GitHub gems not found on #{GEMCUTTER_URL} (won't be touched):
     
     private
     def self.cmd(cmd, wet = false)
+      cmd = "sudo #{cmd}" if @use_sudo
       puts "running: #{cmd}"
-      system(cmd) if wet
+      system("sudo " + cmd) if @wet
     end
   end
 end

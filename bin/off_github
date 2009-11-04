@@ -2,8 +2,32 @@
 require 'rubygems'
 require 'off_github'
 
-if ARGV[0] == "--dry"
-  OffGithub::Runner.run
-else
-  OffGithub::Runner.run true
+allowed_options = %w(--dry --no-sudo --help)
+
+if invalid_arg = ARGV.find{ |arg| !allowed_options.include?(arg) }
+  puts "Unrecognized option #{invalid_arg}"
+  exit(0)
 end
+
+if ARGV.include? "--help"
+  puts <<-HELP
+  
+Available options:
+
+--dry
+    Run without actually executing anything.
+    
+--no-sudo
+    Don't use sudo when executing gem install/uninstall operations.
+    
+--help
+    Show this text.
+
+  HELP
+  exit(0)
+end
+
+options = Hash[*ARGV.map{|arg| [arg.split('--')[1].to_sym, true]}.flatten]
+
+puts "Maximize your terminal for better view.\nAnalyzing local and remote gems. This may take a bit...\n\n"
+OffGithub::Runner.run options

@@ -6,5 +6,11 @@ A simple tool which helps migrate your locally installed gems from github to gem
 
   % sudo gem install off_github
   % off_github
-  
+
 Follow instructions.
+
+== Options
+
+Run --help to see available options.
+Run --no-sudo to avoid using sudo.
+Run --dry to simulate the process.
