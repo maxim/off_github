@@ -214,7 +214,7 @@ Couldn't find these gems on Gemcutter:
     def self.cmd(cmd, wet = false)
       cmd = "sudo #{cmd}" if @use_sudo
       puts "running: #{cmd}"
-      system("sudo " + cmd) if @wet
+      system(cmd) if @wet
     end
   end
 end
