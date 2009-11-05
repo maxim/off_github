@@ -4,6 +4,8 @@ A simple tool which helps migrate your locally installed gems from github to gem
 
 == Run
 
+Make sure you have gemcutter installed by following these instructions[http://gemcutter.org].
+
   % sudo gem install off_github
   % off_github
 
